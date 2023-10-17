@@ -15,5 +15,5 @@ A mobile app to manage plant inventory
 - React
 - React Native
 - Nodejs
-- PostgresSql
+- MongoDB
 - Docker
