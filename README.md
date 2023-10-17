@@ -11,6 +11,7 @@ A mobile app to manage plant inventory
 - Provide reminder when plant management is due
 
 ## Technolgy Consideration
+- Javascript
 - React
 - React Native
 - Nodejs
