@@ -1,0 +1,22 @@
+{
+  "name": "planthub",
+  "version": "1.0.0",
+  "description": "Mobile app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oghenemaro/PlantHub.git"
+  },
+  "author": "Maro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oghenemaro/PlantHub/issues"
+  },
+  "homepage": "https://github.com/Oghenemaro/PlantHub#readme",
+  "dependencies": {
+    "@hapi/vision": "^7.0.3"
+  }
+}
