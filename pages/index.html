@@ -1,0 +1,62 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./test.css"/> -->
+</head>
+<script>
+    function editProfile() {
+        document.querySelector('.container').style.display = 'none';
+        document.querySelector('.container-edit').style.display = 'block';
+
+        const name = document.querySelector('#name').textContent;
+        document.querySelector('#input-name').value = name;
+
+        const interest = document.querySelector('#interest').textContent;
+        document.querySelector('#input-interest').value = interest;
+    }
+
+    function saveProfile(){
+        document.querySelector('#name').textContent = document.querySelector('#input-name').value;
+        document.querySelector('#interest').textContent = document.querySelector('#input-interest').value;
+
+        document.querySelector('.container-edit').style.display = 'none';
+        document.querySelector('.container').style.display = 'block';
+    }
+</script>
+<style>
+    h4{
+        width: 30%;
+    }
+    div{
+        margin-top: 30px;
+    }
+    .container-edit{
+        display: none;
+    }
+</style>
+<body>
+    <h4>User Profile</h4>
+    <div>
+        <img src="./cat.jpg" alt="Cat">    
+        <h2>{{{title}}}</h2>
+    </div>        
+        <div class='container'>
+            <label >Name: <h4 id="name">Ben Davis</h4></label>
+            <hr/>
+            <label>Interest: <h4 id="interest">Running</h4></label>
+            <hr/>
+            <button class="button" onclick="editProfile()">Edit Profile</button>
+        </div>
+        <div class='container-edit'>
+            Name: <input type="text" id="input-name"/>
+            <hr/>
+            Interest: <input type="text" id="input-interest"/>
+            <hr/>
+            <button class="button" onclick="saveProfile()">Save Profile</button>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+name: planthub
+
+services:
+  db:
+    container_name: plantdb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - backend-volume:/data/db
+
+  app:
+    container_name: planthub
+    build: .
+    restart: always
+    volumes:
+      - .:/home/planthub
+      - /home/planthub/node_modules/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+volumes:
+  backend-volume:
