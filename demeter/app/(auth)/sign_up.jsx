@@ -5,6 +5,7 @@ import LogoComponent from '../../components/LogoComponent'
 import FormComponent from '../../components/FormComponent'
 import ButtonComponent from '../../components/ButtonComponent'
 import { Link } from "expo-router";
+import { createUser } from '../../lib/appwrite'
 
 const Sign_up = () => {
   const [form, setForm] = useState({
@@ -14,7 +15,7 @@ const Sign_up = () => {
     confirmPassword: ''
   })
   const submit = (() => {
-
+    createUser();
   })
   const [isSubmitting, setIsSubmitting] = useState(false);
   return (
