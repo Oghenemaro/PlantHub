@@ -1,22 +1,37 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import LogoComponent from '../../components/LogoComponent'
 import FormComponent from '../../components/FormComponent'
 import ButtonComponent from '../../components/ButtonComponent'
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import { createUser, createUserDemo } from '../../lib/appwrite'
 
 const Sign_up = () => {
   const [form, setForm] = useState({
     username: '',
     email: '',
-    password: '',
-    confirmPassword: ''
-  })
-  const submit = (() => {
-
+    password: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const submit = async () => {
+    // createUserDemo()
+    if (!form.email || !form.password || !form.username) {
+      Alert.alert('error', 'Fill all information');
+    }
+    setIsSubmitting(true)
+    try {
+      const result = await createUser(form.email, form.password, form.username );
+      console.log(result);
+      router.replace('/sign_in')
+    } catch (error) {
+      Alert.alert('Error', error.message)
+    }finally{
+      setIsSubmitting(false)
+    }
+
+  }
   return (
     <SafeAreaView className='h-full'>
       <ScrollView>
@@ -34,17 +49,12 @@ const Sign_up = () => {
             value={form.email} 
             handleChangeText={(e) => setForm({...form, email: e})}
             // otherStyles='mt-7'
-            keyboardType='email-address'
+            // keyboardType='email-address'
           />
           <FormComponent 
             title='Password' 
             value={form.password} 
             handleChangeText={(e) => setForm({...form, password: e})}
-          />
-          <FormComponent 
-            title='Confirm Password' 
-            value={form.confirmPassword} 
-            handleChangeText={(e) => setForm({...form, confirmPassword: e})}
           />
           <ButtonComponent 
             title='Sign Up'

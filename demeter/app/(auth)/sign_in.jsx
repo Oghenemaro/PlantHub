@@ -1,20 +1,36 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import LogoComponent from '../../components/LogoComponent'
 import FormComponent from '../../components/FormComponent'
 import ButtonComponent from '../../components/ButtonComponent'
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import { signIn, deleteSession } from '../../lib/appwrite'
 
 const Sign_in = () => {
   const [form, setForm] = useState({
     email: '',
     password: '',
   })
-  const submit = (() => {
-
-  })
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const deleteAllSessions = async () => {
+    deleteSession()
+  }
+  const submit = async () => {
+    if (!form.email || !form.password) {
+      Alert.alert('error', 'Fill all information');
+    }
+    setIsSubmitting(true)
+    try {
+      await signIn(form.email, form.password)
+      router.replace('/home')
+    } catch (error) {
+      Alert.alert('Error', error.message)
+    }finally{
+      setIsSubmitting(false)
+    }
+
+  }
   return (
     <SafeAreaView className='h-full'>
       <ScrollView>
@@ -36,6 +52,12 @@ const Sign_in = () => {
           <ButtonComponent 
             title='Sign In'
             handlePress={submit}
+            containerStyles='mt-7'
+            isLoading={isSubmitting}
+          />
+            <ButtonComponent 
+            title='Delete Sessions'
+            handlePress={deleteAllSessions}
             containerStyles='mt-7'
             isLoading={isSubmitting}
           />
