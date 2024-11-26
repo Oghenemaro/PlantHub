@@ -21,7 +21,13 @@ const planthub = async (server) => {
 
         server = Hapi.server({
         host: '0.0.0.0',
-        port: 3000
+        port: 3000,
+        routes: {
+            cors:{
+                origin: ['*'],
+                credentials: true,
+            }
+        }
     })
 
     await server.register(Vision);
