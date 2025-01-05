@@ -1,17 +1,16 @@
 FROM node:bullseye
 
-RUN mkdir -p /home/planthub/node_modules && chown -R node:node /home/planthub
 WORKDIR /home/planthub
 
-COPY package.json package-lock.json ./
-
-USER node
+COPY --chown=node:node  package.json package-lock.json ./
 
 
-# not sure about this line
-COPY --chown=node:node . .
 
 RUN npm install 
+
+COPY --chown=node:node . .
+
+USER node
 
 
 EXPOSE 3000

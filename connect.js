@@ -1,15 +1,13 @@
 'use strict'
 
-const { MongoClient } = require('mongodb');
-const mongoose = require('mongoose');
+import { MongoClient } from 'mongodb'
+import mongoose from 'mongoose'
 
-class Connection{
+export default class Connection{
     static async connect(){
-
         try {
             const status = await mongoose.connect('mongodb+srv://maro:jzJf9nTUPb4xCakL@plantdb.bl6lo.mongodb.net/?retryWrites=true&w=majority&appName=PlantDB', {dbName:'PlantAPI'})
             console.log('Atlas connected')
-            // console.log(status)
         } catch (error) {
             console.log(error)
         }
@@ -26,5 +24,3 @@ class Connection{
     }
 }
 
-
-module.exports = Connection;

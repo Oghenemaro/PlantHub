@@ -1,5 +1,5 @@
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const plantSchema = mongoose.Schema(
     {
@@ -16,6 +16,6 @@ const plantSchema = mongoose.Schema(
 
 
 
-const Plants = mongoose.model('Plant', plantSchema);
+const plants = mongoose.model('Plant', plantSchema);
 
-module.exports = Plants;
+export default plants;

@@ -2,14 +2,11 @@ name: planthub
 
 services:
   app:
+    image: planthub:latest
     container_name: planthub
     build: .
     restart: always
     volumes:
       - .:/home/planthub
-      - /home/planthub/node_modules/
     ports:
       - "3000:3000"
-
-volumes:
-  backend-volume:
