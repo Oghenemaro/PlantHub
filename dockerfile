@@ -1,10 +1,8 @@
 FROM node:bullseye
 
-WORKDIR /home/planthub
+WORKDIR /projects/planthub
 
 COPY --chown=node:node  package.json package-lock.json ./
-
-
 
 RUN npm install 
 
