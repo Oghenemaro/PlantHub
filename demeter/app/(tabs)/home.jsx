@@ -1,6 +1,7 @@
 import { View, Text, FlatList } from 'react-native'
 import React, { useState } from 'react'
-import ProfileComponent from '../../components/ProfileComponent'
+import ProfileHeaderComponent from '../../components/ProfileHeaderComponent'
+import ProfileBodyComponent from '../../components/ProfileBodyComponent'
 import { plants } from '../../routes/plants'
 
 const Home = () => {
@@ -34,26 +35,8 @@ const Home = () => {
   // Properly return JSX for FlatList
   return (
     <View className="flex-1 pt-10">
-      <ProfileComponent/>
-      <View className="flex-1 m-2 border-2 border-indigo-200">
-        <Text>Data Received</Text>
-        <FlatList
-          className="flex-1"
-          data={data}
-          keyExtractor={(item) => item._id.toString()}  // Make sure to destructure 'item' correctly
-          renderItem={({ item }) => {
-            return (
-              <View className="w-full min-h-[20vh] justify-center items-center">
-                <Text>{item._id}</Text>
-                <Text>{item.name}</Text>
-                <Text>{item.createdAt}</Text>
-                <Text>{item.updatedAt}</Text>
-              </View>
-            )
-          }}
-        />
-      </View>
-      
+      <ProfileHeaderComponent/>
+      <ProfileBodyComponent data={data}/>
     </View>
   )
 }

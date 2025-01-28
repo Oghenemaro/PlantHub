@@ -1,12 +1,9 @@
-import profile from "../assets/images/profile.png";
-import thumbnail from "../assets/images/thumbnail.png";
-import cards from "../assets/images/cards.png";
-import path from "../assets/images/path.png";
-import logo from "../assets/images/logo.png";
-import logoSmall from "../assets/images/logo-small.png";
-import empty from "../assets/images/empty.png";
 import homeScreenImage from "../assets/images/calathea-plant.jpg";
 import maleAvatar from "../assets/images/male-avatar.jpg";
 import femaleAvatar from "../assets/images/female-avatar.jpg";
+import messageAvatar from "../assets/images/message-avatar.png";
+import notificationAvatar from "../assets/images/notification-avatar.png";
+import plantAvatar from "../assets/images/plantpot.jpg";
 
-export default { profile, thumbnail, cards, path, logo, logoSmall, empty, homeScreenImage, maleAvatar, femaleAvatar };
+
+export default { homeScreenImage, maleAvatar, femaleAvatar, messageAvatar, notificationAvatar, plantAvatar };
