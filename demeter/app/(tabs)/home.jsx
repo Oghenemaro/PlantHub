@@ -34,7 +34,7 @@ const Home = () => {
 
   // Properly return JSX for FlatList
   return (
-    <View className="flex-1 pt-10">
+    <View className="flex-1 pt-10 bg-white">
       <ProfileHeaderComponent/>
       <ProfileBodyComponent data={data}/>
     </View>

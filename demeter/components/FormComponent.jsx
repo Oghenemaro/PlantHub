@@ -22,7 +22,7 @@ const FormComponent = ({ title, value, placeholder, handleChangeText, otherStyle
         {title === 'Password' && (
             <TouchableOpacity onPress={() => setPassword(!showPassword)}>
                 <Image source={!showPassword ? icons.eye : icons.eyehide}
-                       className='w-6 h-6' 
+                       className='w-6 h-6 ' 
                        resizeMode='contain'
                 />
             </TouchableOpacity>
