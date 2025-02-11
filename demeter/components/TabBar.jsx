@@ -1,7 +1,7 @@
-import { View, Platform, StyleSheet, LayoutChangeEvent } from 'react-native';
+import { View, Platform, StyleSheet, LayoutChangeEvent, Alert } from 'react-native';
 import TabBarButton from './TabBarButton';
 import { useLinkBuilder, useTheme } from '@react-navigation/native'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
 
@@ -9,6 +9,7 @@ import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-na
 export function TabBar({ state, descriptors, navigation }) {
   const { colors } = useTheme();
   const [dimensions, setDimension] = useState({width: 1000, height: 200})
+  
 
   const determineWidth = dimensions.width / state.routes.length
   // set layout dimension depending on viewport 
@@ -36,6 +37,7 @@ export function TabBar({ state, descriptors, navigation }) {
         height: dimensions.height - 10,
         width: determineWidth - 25
       }]}/>
+      
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
@@ -46,10 +48,9 @@ export function TabBar({ state, descriptors, navigation }) {
               : route.name;
 
         const isFocused = state.index === index;
-
+        
         const onPress = () => {
           // set the x-axis value 
-          
           tabPositionX.value = withSpring(determineWidth * index, {duration:1500})
           const event = navigation.emit({
             type: 'tabPress',
@@ -63,6 +64,7 @@ export function TabBar({ state, descriptors, navigation }) {
         };
 
         const onLongPress = () => {
+          // refactor this & find the emit() reference
           navigation.emit({
             type: 'tabLongPress',
             target: route.key,
@@ -78,6 +80,7 @@ export function TabBar({ state, descriptors, navigation }) {
             routeName={route.name}
             color={isFocused ? '#673ab7' : '#222'}
             label={label} />
+          
         );
       })}
     </View>

@@ -38,9 +38,9 @@ const TabBarButton = ({ onPress, onLongPress, isFocused, routeName, color, label
         >
             <Animated.View style={animatedIcon}>
                 {/* Handle rountName being undefined properly*/}
-                {routeName !== undefined ? icon[routeName]({
+                {icon[routeName]({
                     color: isFocused ? '#fff' : '#222'
-                }) : (() => null)}
+                })}
             </Animated.View>
             <Animated.Text style={[{ color: isFocused ? colors.primary : colors.text, fontSize: 10 }, animatedText]}>
                 {label}

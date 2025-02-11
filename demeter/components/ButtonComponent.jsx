@@ -1,10 +1,10 @@
 import { TouchableOpacity, Text} from 'react-native'
 import React from 'react'
 
-const ButtonComponent = ({ title, handlePress, containerStyles, textStyles, isLoading }) => {
+const ButtonComponent = ({ title, handlePress, containerStyles, textStyles, isLoading, value }) => {
   return (
     <TouchableOpacity 
-      onPress={handlePress} 
+      onPress={handlePress}
       activeOpacity={0.7} 
       className={`justify-center items-center bg-green-950 w-36 h-16 rounded-full ${containerStyles} ${isLoading ? 'opacity-50': ' '} `}
       disabled={isLoading}>

@@ -1,11 +1,12 @@
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
 import ProfileHeaderComponent from '../../components/ProfileHeaderComponent'
 import ProfileBodyComponent from '../../components/ProfileBodyComponent'
 import { plants } from '../../routes/plants'
 
 const Home = () => {
-  const { data, loading, error } = plants('http://192.168.1.135:3000/api/plants')
+  // const { data, loading, error } = plants('http://192.168.1.135:3000/api/plants')
+  const { data, loading, error } = ''
 
   if (loading) {
     return (
@@ -34,10 +35,10 @@ const Home = () => {
 
   // Properly return JSX for FlatList
   return (
-    <View className="flex-1 pt-10 bg-white">
+    <SafeAreaView className="flex-1 pt-10 bg-white">
       <ProfileHeaderComponent/>
       <ProfileBodyComponent data={data}/>
-    </View>
+    </SafeAreaView>
   )
 }
 

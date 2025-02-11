@@ -21,7 +21,7 @@ const _layout = () => {
                     headerShown: false,
                 }}
             />
-            <Tabs.Screen name='addPlant' options={{
+            <Tabs.Screen name='AddPlant' options={{
                     title: 'Plant',
                     headerShown: false,
                 }}
